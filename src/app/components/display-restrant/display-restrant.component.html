@@ -1,0 +1,90 @@
+
+<div class="body">
+<div class="row m-5 ">
+<div class="card" *ngIf=" !Restrant.isedit; else elseblock">
+        <div class="card-body" >
+          <div class="card-title">
+              <h4>  Restrant Name:{{Restrant.name| titlecase}}</h4>
+          </div>
+          <div  class="card-subtitle">
+              <h4>  Restrant Address:{{Restrant.adress| titlecase}}</h4>
+          </div>
+{{Restrant.ResturantImg}}
+          <a class="btn btn-warning m-3" (click)="editRes(Restrant)">Edit</a>
+          <button  class="btn btn-danger " (click)="delete()">Delete all restrent</button>
+      </div>
+      </div>
+      <ng-template #elseblock >
+        <div class="card" >
+          <div class="card-body">
+            <div class="card-title" >
+                edit resturant
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <div class="col-m-12">
+                  <input type="text" class="form-control" [(ngModel)]="Restrant.editname">
+                </div>
+                <div class="col-m-12">
+                  <input type="text" class="form-control" [(ngModel)]="Restrant.editaddress">
+                </div>
+
+              </div>
+            </div>
+            <a class="btn btn-success" href="#" (click)="Restrant.isedit=false">cancel</a>
+            <a class="btn btn-warning" (click)="updatedItem(Restrant)">update</a>
+          </div>
+        </div>
+      </ng-template>
+
+
+
+      <table class="table my-4">
+        <thead class="bg-light">
+            <tr >
+              <th scope="col" >name</th>
+              <th scope="col">price</th>
+              <th scope="col" class="mx-3" colspan="2" >Handle</th>
+            </tr>
+          </thead>
+          <tbody >
+
+     <tr scope="row" class="mb-3 ms-4" *ngFor="let menu of Restrant.meals;let i=index " >
+                <td class="form-label">{{Restrant.meals[i].name}} </td>
+                <td class="form-label">{{Restrant.meals[i].price}}</td>
+                <td>          <i class="bi bi-archive-fill "></i>
+                  <i class="bi bi-pencil-fill mx-3"></i>
+                </td>
+        </tr>
+
+
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

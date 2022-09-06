@@ -1,0 +1,57 @@
+      <div class="page-wrapper">
+
+        <div class="content-wrapper">
+
+
+          <div class="form-outline m-5 p-4 ">
+            <input type="search" class="form-control searchTerm" name="searchTerm" id="searchTerm" placeholder="Filter by Restrant name"
+            [(ngModel)]="searchTerm"  (input)="search(searchTerm)">
+          </div>
+
+
+
+    </div>
+    <table id="productsTable" class="table table-hover table-product" style="width:100%" >
+      <thead>
+        <tr>
+          <th>Restrant number</th>
+          <th>Restrant Name</th>
+          <th>Open</th>
+
+
+        </tr>
+      </thead>
+      <tbody  *ngFor="let Restrant of Restrant | searchFilter: searchTerm; index as i">
+
+        <tr>
+          <td class="py-0">
+{{i+1}}
+
+          </td>
+          <td>{{Restrant.name}}</td>
+
+          <td>  <a class="btn btn-primary" (click)="go(Restrant.id)" >Go to</a></td>
+
+
+
+
+          <!-- <td>  <a class="btn btn-warning" >update</a></td> -->
+          <!-- <td>
+            <button  class="btn btn-danger" (click)="delete(Restrant.id)">Delete all restrent</button>
+
+          </td> -->
+          <td>
+          </td>
+
+
+        </tr>
+
+
+      </tbody>
+    </table>
+
+
+
+
+
+

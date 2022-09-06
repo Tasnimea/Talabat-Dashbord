@@ -1,0 +1,287 @@
+
+<!-- <div class="container">
+  <div class="form-group">
+<input type="text" class="form-control" [(ngModel)]="ResturantName"  placeholder="Restrunt name">
+  </div>
+  <div class="form-group">
+<input type="text" class="form-control" [(ngModel)]="ResturantAddress" placeholder="Restrunt Address">
+  </div>
+  <div class="form-group">
+<button (click)="createRecord()" class="btn btn-primary">Add</button>
+  </div>
+</div> -->
+<!-- binding on form -->
+<!-- <form [formGroup]="usrFormGroup"  class="m-2">
+
+  <div class="mb-3">
+      <label for="RestruntName" class="form-label">RestruntName</label>
+
+      <input type="text" class="form-control" name="ResturantName" id="ResturantName" formControlName="ResturantName">
+
+    </div>
+
+
+    <label for="file">File:</label>
+    <input
+      type="file"
+      (change)="upload($event)"
+      name="ResturantImg"
+      id="ResturantImg"
+      accept=".png,.jpg,.webp"
+    />
+    <button (click)="uploadImage()">Upload Image</button>
+
+
+  <div class="mb-3">
+    <label for="ResturantAddress" class="form-label">ResturantAddress</label>
+    <input type="text" class="form-control" name="ResturantAddress" id="ResturantAddress" formControlName="ResturantAddress">
+  </div>
+
+
+
+    <div formArrayName="meals"
+    *ngFor="let item of orders.controls; let i = index;">
+    <div [formGroupName]="i">
+      <input formControlName="name" placeholder="Meal">
+      <input formControlName="price" placeholder="Price">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-danger" (click)="addItem()">Add Meal</button>
+  <br>
+<br>
+
+  <button type="submit" class="btn btn-success" (click)="createRecord()">Submit</button>
+</form>
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <form [formGroup]="usrFormGroup">
+    <h1 class="my-4">Add New Restrant </h1>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Restrant Name</label>
+
+      <input type="text" class="form-control"  name="ResturantName" id="ResturantName" formControlName="ResturantName">
+
+        <div class="alert alert-warning my-3" [hidden]="ResturantName?.valid || ResturantName?.untouched">
+
+            <small *ngIf="ResturantName?.errors?.['required']">
+              Restrant Name is required
+            </small >
+            <small *ngIf="ResturantName?.errors?.['minlength']">
+             Not Valid Restrant Name
+
+            </small>
+        </div>
+
+
+        </div>
+      </div>
+
+
+
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Restrant Address</label>
+
+          <select type="text" class="form-control" name="ResturantAddress" id="ResturantAddress" formControlName="ResturantAddress">
+            <option value="cairo" selected>cairo</option>
+            <option value="alex">alex</option>
+            <option value="portsaid">portsaid</option>
+            <option value="sohag">sohag</option>
+          </select>
+
+          <div class="alert alert-warning my-3" [hidden]="ResturantAddress?.valid || ResturantAddress?.untouched">
+
+            <small *ngIf="ResturantAddress?.errors?.['required']">
+              Restrant Address is required
+            </small >
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+<div class="row my-2">
+ <div class="col-md-6">
+        <div class="form-group">
+          <label>Restrant Cuisines</label>
+      <select type="text" class="form-control" placeholder="Restrant Cuisines" name="ResturantCuisines" id="ResturantCuisines" formControlName="ResturantCuisines">
+      <option value="Acai" selected>Acai</option>
+      <option value="Afghani">Afghani</option>
+      <option value="African">African</option>
+      <option value="American">American</option>
+      <option value="Arabic">Arabic</option>
+      <option value="Arabic sweets">Arabic sweets</option>
+
+    </select>
+        <div class="alert alert-warning my-3" [hidden]="ResturantCuisines?.valid || ResturantCuisines?.untouched">
+
+            <small *ngIf="ResturantCuisines?.errors?.['required']">
+              Restrant Cuisines is required
+            </small >
+
+        </div>
+
+
+        </div>
+      </div>
+
+
+
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Min.Order Amount</label>
+
+      <input type="text" class="form-control"  name="MinOrderAmount" id="MinOrderAmount" formControlName="MinOrderAmount">
+
+        <div class="alert alert-warning my-3" [hidden]="MinOrderAmount?.valid || MinOrderAmount?.untouched">
+
+            <small *ngIf="MinOrderAmount?.errors?.['required']">
+              Restrant Min.Order Amount is required
+            </small >
+
+        </div>
+
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>Delivery</label>
+
+  <input type="text" class="form-control"  name="Delivery" id="Delivery" formControlName="Delivery">
+
+    <div class="alert alert-warning my-3" [hidden]="Delivery?.valid || Delivery?.untouched">
+
+        <small *ngIf="Delivery?.errors?.['required']">
+          Restrant Delivery is required
+        </small >
+
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+    <div class="col-md-6 my-3">
+      <div class="form-group">
+        <!-- <input
+        type="file"
+        class="form-control"
+        (change)="upload($event)"
+        name="ResturantImg"
+        id="ResturantImg"
+        accept=".png,.jpg,.webp"
+      /> -->
+
+      <label>Restrant Image</label>
+
+      <input type="file"
+      class="form-control"
+      id="file"
+      #userPhoto
+      (change)="onFileSelected($event)"
+      name="image"
+      name="ResturantImg"
+
+      autocomplete="off"
+      />
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <h2 class="my-5">Add New Menu  </h2>
+
+
+    <!-- <div formArrayName="meals"
+    *ngFor="let item of orders.controls; let i = index;">
+    <div [formGroupName]="i">
+      <input formControlName="name" placeholder="Meal">
+      <input formControlName="price" placeholder="Price">
+    </div>
+  </div> -->
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">item name</th>
+        <th scope="col">item price</th>
+      </tr>
+    </thead>
+    <tbody formArrayName="meals"
+    *ngFor="let item of orders.controls; let i = index;"  >
+      <tr [formGroupName]="i" >
+        <th scope="row">{{i+1}}</th>
+        <td>
+          <input formControlName="name" placeholder="Meal" style="border-style: none;">
+        </td>
+        <td>
+          <input formControlName="price" placeholder="Price" style="border-style: none;">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+  <button type="submit" class="btn btn-danger me-3" (click)="addItem()">Add Meal</button>
+
+  <button type="submit" class="btn btn_orange" (click)="createRecord()">Submit</button>
+</form>
+
+</div>
+
+
